@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Your Property. My Priority.</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Pinyon+Script&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --white:#FFFFFF; --cream:#FBF4EF; --paper:#FFFDFB;
+    --blush:#F1CFD2; --peach:#F5DEC7; --rose-deep:#B8677A; --rose:#D98A99;
+    --blush-deep:#E7B4B9; --ink:#4A3439; --ink-soft:#7A6266; --line:#EADCD8;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{font-family:'DM Sans',sans-serif;color:var(--ink);background:var(--cream);line-height:1.65;-webkit-font-smoothing:antialiased;}
+  .container{max-width:1080px;margin:0 auto;padding:0 40px;}
+  h1,h2,h3{font-family:'DM Serif Display',serif;font-weight:400;letter-spacing:-0.01em;}
+  img{max-width:100%;display:block;}
+  a{color:inherit;text-decoration:none;}
+  [id]{scroll-margin-top:88px;}
+
+  nav{position:sticky;top:0;z-index:50;background:rgba(251,244,239,0.92);backdrop-filter:blur(8px);border-bottom:1px solid var(--line);}
+  nav .container{position:relative;display:flex;align-items:center;justify-content:space-between;padding-top:16px;padding-bottom:16px;}
+  .brand{font-family:'DM Serif Display',serif;font-size:21px;color:var(--rose-deep);}
+  .nav-links{display:flex;align-items:center;gap:24px;font-size:13.5px;font-weight:500;color:var(--ink-soft);}
+  .nav-links a:hover{color:var(--rose-deep);}
+  .nav-cta{background:var(--rose-deep);color:var(--paper);padding:10px 20px;border-radius:100px;font-size:13.5px;font-weight:600;}
+  .nav-cta:hover{background:var(--rose);}
+  .hamburger{display:none;background:none;border:none;cursor:pointer;width:36px;height:36px;align-items:center;justify-content:center;color:var(--rose-deep);font-size:20px;}
+  @media(max-width:900px){
+    .hamburger{display:flex;}
+    .nav-links{display:none;position:absolute;top:100%;left:0;right:0;flex-direction:column;align-items:stretch;gap:0;background:var(--paper);border-bottom:1px solid var(--line);box-shadow:0 16px 28px rgba(74,52,57,0.1);}
+    .nav-links.nav-open{display:flex;}
+    .nav-links a{padding:15px 32px;border-bottom:1px solid var(--line);}
+  }
+
+  .eyebrow{font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--rose-deep);margin-bottom:16px;}
+  .section-title{font-size:32px;line-height:1.3;margin-bottom:14px;max-width:680px;}
+  .subheading{font-size:16px;color:var(--ink-soft);max-width:62ch;margin-bottom:16px;}
+  .intro-p p{font-size:15px;color:var(--ink-soft);max-width:62ch;}
+  .intro-p p + p{margin-top:10px;}
+
+  .hero{
+    position:relative;min-height:86vh;display:flex;align-items:flex-end;
+    background-image:linear-gradient(180deg, rgba(74,52,57,0.15) 0%, rgba(74,52,57,0.35) 55%, rgba(251,244,239,0.97) 96%),
+      url('https://images.pexels.com/photos/29765805/pexels-photo-29765805.jpeg?auto=compress&cs=tinysrgb&w=1920');
+    background-size:cover;background-position:center 30%;
+  }
+  .hero-inner{position:relative;width:100%;padding-bottom:64px;padding-top:48px;}
+  .eyebrow-tag{
+    display:inline-flex;align-items:center;gap:8px;flex-wrap:wrap;background:rgba(255,253,251,0.9);color:var(--rose-deep);
+    padding:9px 18px;border-radius:100px;font-size:12px;font-weight:600;letter-spacing:.04em;text-transform:uppercase;
+    margin-bottom:22px;box-shadow:0 4px 14px rgba(74,52,57,0.08);max-width:640px;
+  }
+  .hero h1{color:var(--paper);font-size:clamp(32px,4.6vw,50px);line-height:1.2;max-width:820px;text-shadow:0 2px 18px rgba(74,52,57,0.35);}
+  .hero h1 em{font-style:normal;font-family:'Pinyon Script',cursive;color:var(--peach);font-size:1.2em;padding:0 4px;}
+  .hero p{color:var(--paper);max-width:560px;font-size:17px;margin-top:22px;opacity:.95;text-shadow:0 1px 10px rgba(74,52,57,0.3);}
+  .hero-actions{display:flex;gap:14px;margin-top:32px;flex-wrap:wrap;}
+  .btn-primary{background:var(--rose-deep);color:var(--paper);padding:14px 28px;border-radius:100px;font-weight:600;font-size:15px;box-shadow:0 8px 20px rgba(184,103,122,0.35);}
+  .btn-primary:hover{background:var(--rose);}
+  .btn-ghost{background:rgba(255,253,251,0.92);color:var(--rose-deep);padding:14px 28px;border-radius:100px;font-weight:600;font-size:15px;}
+
+  section{padding:80px 0;}
+
+  .grid-2{display:grid;grid-template-columns:repeat(2,1fr);gap:24px;margin-top:44px;}
+  .grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:44px;}
+  @media(max-width:860px){.grid-3{grid-template-columns:1fr 1fr;}}
+  @media(max-width:760px){.grid-2{grid-template-columns:1fr;}}
+  @media(max-width:640px){.grid-3{grid-template-columns:1fr;}}
+
+  .card-blush{background:linear-gradient(135deg,var(--blush) 0%,var(--peach) 100%);border-radius:18px;padding:28px 26px;position:relative;}
+  .card-blush .tape{position:absolute;top:-10px;left:26px;width:54px;height:18px;background:var(--rose-deep);opacity:.9;transform:rotate(-3deg);border-radius:2px;box-shadow:0 3px 7px rgba(74,52,57,.2);}
+  .card-blush .top-row{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:16px;}
+  .card-blush .thumb{width:52px;height:52px;border-radius:11px;overflow:hidden;border:3px solid var(--paper);box-shadow:0 6px 14px rgba(74,52,57,.12);flex-shrink:0;}
+  .card-blush .thumb img{width:100%;height:100%;object-fit:cover;}
+  .card-blush .num{font-family:'DM Serif Display',serif;font-size:20px;color:var(--rose-deep);opacity:.7;}
+  .card-blush h3{font-size:17.5px;margin-bottom:8px;color:var(--ink);font-weight:700;font-family:'DM Sans',sans-serif;line-height:1.3;}
+  .card-blush .punch{font-size:13.5px;font-weight:600;color:var(--rose-deep);margin-bottom:8px;}
+  .card-blush p.desc{font-size:13.5px;color:var(--ink-soft);}
+
+  .card-service{background:linear-gradient(135deg,var(--blush) 0%,var(--peach) 100%);border-radius:18px;padding:0 0 24px;position:relative;}
+  .card-service .photo-banner{aspect-ratio:4/3;position:relative;background:var(--paper);border-radius:18px 18px 0 0;overflow:hidden;}
+  .card-service .photo-banner img{width:100%;height:100%;object-fit:cover;}
+  .card-service .tape{position:absolute;top:-10px;left:22px;width:56px;height:19px;background:var(--rose-deep);opacity:.92;transform:rotate(-3deg);border-radius:2px;box-shadow:0 3px 7px rgba(74,52,57,.25);z-index:2;}
+  .card-service .num-badge{
+    position:absolute;top:14px;right:14px;width:32px;height:32px;border-radius:50%;
+    background:var(--paper);color:var(--rose-deep);font-family:'DM Serif Display',serif;font-size:15px;
+    display:flex;align-items:center;justify-content:center;box-shadow:0 4px 10px rgba(74,52,57,.18);z-index:2;
+  }
+  .card-service .body{padding:22px 24px 0;}
+  .card-service .eyebrow-sm{font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--rose-deep);margin-bottom:8px;}
+  .card-service h3{font-size:17.5px;margin-bottom:8px;color:var(--ink);font-weight:700;font-family:'DM Sans',sans-serif;line-height:1.3;}
+  .card-service p.desc{font-size:13.5px;color:var(--ink-soft);}
+  .card-service .result{font-size:12.5px;color:var(--rose-deep);font-weight:600;margin-top:12px;padding-top:12px;border-top:1px solid rgba(184,103,122,0.25);}
+
+  .closing{margin-top:52px;text-align:center;max-width:600px;margin-left:auto;margin-right:auto;}
+  .closing h3{font-size:22px;color:var(--ink);margin-bottom:12px;font-weight:400;}
+  .closing p{color:var(--ink-soft);font-size:15px;}
+
+  #services{background:var(--cream);}
+  #benefits{background:var(--white);}
+
+  #about{background:var(--cream);}
+  .about-grid{display:grid;grid-template-columns:1.25fr 1fr;gap:56px;align-items:center;}
+  @media(max-width:860px){.about-grid{grid-template-columns:1fr;}}
+  .note-card{background:var(--paper);border-radius:4px 22px 4px 22px;padding:48px;box-shadow:0 18px 40px rgba(74,52,57,0.08);position:relative;border:1px solid var(--line);}
+  .note-card::before{content:"";position:absolute;top:-10px;left:40px;width:76px;height:26px;background:rgba(245,222,199,0.85);border:1px solid rgba(74,52,57,0.06);transform:rotate(-4deg);box-shadow:0 3px 6px rgba(74,52,57,0.08);}
+  .note-card h2{font-size:28px;color:var(--ink);margin-bottom:22px;}
+  .note-card p{font-size:15px;color:var(--ink-soft);max-width:60ch;}
+  .note-card p + p{margin-top:16px;}
+  .signature{margin-top:26px;font-family:'DM Serif Display',serif;font-size:20px;color:var(--rose-deep);font-style:italic;}
+  .stats-row{display:flex;gap:28px;margin-top:32px;flex-wrap:wrap;}
+  .stat .num{font-family:'DM Serif Display',serif;font-size:26px;color:var(--rose-deep);}
+  .stat .label{font-size:11.5px;color:var(--ink-soft);letter-spacing:.05em;text-transform:uppercase;margin-top:2px;}
+  .about-photo{border-radius:4px 28px 4px 28px;overflow:hidden;box-shadow:0 22px 42px rgba(74,52,57,0.16);transform:rotate(2deg);border:6px solid var(--paper);max-width:360px;margin:0 auto;}
+  .about-photo img{width:100%;aspect-ratio:4/5;object-fit:cover;}
+  .about-links{margin-top:18px;display:flex;flex-direction:column;gap:10px;align-items:center;}
+  .about-links a{display:inline-flex;align-items:center;justify-content:center;gap:8px;border:1.5px solid var(--rose-deep);color:var(--rose-deep);padding:10px 22px;border-radius:100px;font-size:13.5px;font-weight:600;max-width:220px;width:100%;}
+  .about-links a:hover{background:var(--rose-deep);color:var(--paper);}
+
+  #projects{background:var(--white);}
+  .card-polaroid{background:var(--paper);border-radius:16px;padding:14px 14px 24px;box-shadow:0 14px 30px rgba(74,52,57,0.09);}
+  .card-polaroid .thumb{aspect-ratio:16/12;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:34px;margin-bottom:18px;}
+  .card-polaroid .thumb.t1{background:linear-gradient(135deg,var(--peach),var(--blush));}
+  .card-polaroid .thumb.t2{background:linear-gradient(135deg,var(--blush),var(--blush-deep));}
+  .card-polaroid .thumb.t3{background:linear-gradient(135deg,var(--blush-deep),var(--rose-deep));}
+  .card-polaroid .body{padding:0 6px;}
+  .card-polaroid h3{font-size:18px;color:var(--ink);font-weight:700;font-family:'DM Sans',sans-serif;margin-bottom:8px;}
+  .card-polaroid .btn{display:inline-flex;align-items:center;gap:6px;margin-top:18px;background:var(--rose-deep);color:var(--paper);padding:10px 18px;border-radius:100px;font-size:12.5px;font-weight:700;}
+
+  #tools{background:var(--cream);}
+  .tool-category{margin-top:40px;}
+  .tool-category:first-of-type{margin-top:44px;}
+  .tool-category h3{font-size:13px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--rose-deep);margin-bottom:18px;font-family:'DM Sans',sans-serif;}
+  .tool-row{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;}
+  @media(max-width:760px){.tool-row{grid-template-columns:repeat(2,1fr);}}
+  @media(max-width:480px){.tool-row{grid-template-columns:1fr;}}
+  .tool-card{background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:20px 18px;display:flex;gap:14px;align-items:flex-start;}
+  .tool-card .icon{width:42px;height:42px;border-radius:11px;background:var(--blush);display:flex;align-items:center;justify-content:center;font-size:19px;flex-shrink:0;}
+  .tool-card h4{font-size:14.5px;font-weight:700;color:var(--ink);margin-bottom:4px;}
+  .tool-card p{font-size:12.5px;color:var(--ink-soft);}
+  .tool-card .sample-link{display:inline-block;margin-top:8px;font-size:11.5px;font-weight:700;color:var(--rose-deep);}
+  .tool-card .sample-link:hover{color:var(--rose);}
+
+  #credentials{background:var(--white);}
+  .cert-cta{text-align:center;margin-top:36px;}
+  .cert-cta a{display:inline-flex;align-items:center;gap:8px;border:1.5px solid var(--rose-deep);color:var(--rose-deep);padding:12px 26px;border-radius:100px;font-size:13.5px;font-weight:600;}
+  .cert-cta a:hover{background:var(--rose-deep);color:var(--paper);}
+  .cert-card .cert-photo{aspect-ratio:16/10;border-radius:14px 14px 0 0;overflow:hidden;margin-bottom:18px;}
+  .cert-card .cert-photo img{width:100%;height:100%;object-fit:cover;display:block;}
+  .cert-card .cert-row{display:flex;gap:16px;align-items:flex-start;padding:0 26px;}
+  .cert-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:40px;}
+  @media(max-width:860px){.cert-grid{grid-template-columns:1fr;}}
+  .cert-card{background:var(--paper);border:1px solid var(--line);border-radius:16px;padding:0 0 26px;overflow:hidden;}
+  .cert-card .ribbon{font-size:26px;flex-shrink:0;}
+  .cert-card h3{font-size:16.5px;color:var(--ink);margin-bottom:4px;font-family:'DM Sans',sans-serif;font-weight:700;}
+  .cert-card p{font-size:13.5px;color:var(--ink-soft);}
+
+  #contact{background:var(--cream);}
+  .contact-wrap{text-align:center;}
+  .contact-wrap h2{font-size:clamp(28px,4vw,40px);color:var(--rose-deep);max-width:640px;margin:0 auto 16px;}
+  .contact-wrap > p{color:var(--ink-soft);max-width:480px;margin:0 auto 32px;font-size:16px;}
+  .contact-info{display:flex;justify-content:center;gap:36px;flex-wrap:wrap;margin-top:44px;font-size:14.5px;color:var(--ink-soft);}
+  .contact-info .item strong{display:block;font-family:'DM Serif Display',serif;font-weight:400;color:var(--rose-deep);font-size:16px;margin-bottom:2px;}
+
+  footer{background:var(--rose-deep);color:var(--peach);padding:40px 0;}
+  footer .container{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px;}
+  footer .brand-foot{font-family:'DM Serif Display',serif;font-size:19px;color:var(--paper);}
+  footer .tagline{font-size:13px;opacity:.85;}
+  footer .foot-links{display:flex;gap:22px;font-size:14px;}
+  footer .foot-links a:hover{color:var(--paper);}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="container">
+    <div class="brand"></div>
+    <div class="nav-links" id="navLinks">
+      <a href="#about">About</a>
+      <a href="#services">Services</a>
+      <a href="#benefits">Why Me</a>
+      <a href="#projects">Projects</a>
+      <a href="#tools">Tools</a>
+      <a href="#credentials">Credentials</a>
+    </div>
+    <a href="#contact" class="nav-cta">Let's Talk</a>
+    <button class="hamburger" id="hamburgerBtn" aria-label="Toggle menu">☰</button>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="container hero-inner">
+    <div class="eyebrow-tag">Property Management | Lease Administration | Operations Support</div>
+    <h1>You've got enough on your plate managing properties. Let me handle the <em>busywork</em>.</h1>
+    <p>From lease admin to tenant coordination, maintenance tracking, and reporting — I handle the day-to-day so you can focus on your properties, not putting out fires.</p>
+    <div class="hero-actions">
+      <a href="#projects" class="btn-primary">View My Portfolio</a>
+      <a href="#contact" class="btn-ghost">Let's Work Together</a>
+    </div>
+  </div>
+</header>
+
+<section id="about">
+  <div class="container">
+    <div class="eyebrow">About Me</div>
+    <div class="about-grid">
+      <div class="note-card">
+        <h2>Hi, I'm Les!</h2>
+        <p>For over 14 years, I've been the go-to person behind the scenes of shopping malls, residential communities, and leasing offices — making sure every lease, rent roll, and compliance document is where it should be.</p>
+        <p>I spent seven years as an SAP system custodian handling lease and financial data across a 60-mall portfolio. Later, I helped build property operations from scratch for a 217-bed residential community — workflows, dashboards, tracking systems, the works. Somewhere along the way, a CEO also asked for my take on a financial analysis that ended up shaping a real business decision — still one of my proudest work moments.</p>
+        <p>Today I bring that same hands-on, detail-first approach to remote property teams — the kind of support where things get handled before you even have to ask.</p>
+        <div class="signature">Les</div>
+        <div class="stats-row">
+          <div class="stat"><div class="num">14+</div><div class="label">Years Experience</div></div>
+          <div class="stat"><div class="num">60</div><div class="label">Mall Portfolio</div></div>
+          <div class="stat"><div class="num">217</div><div class="label">Bed Community</div></div>
+        </div>
+      </div>
+      <div class="about-photo-col">
+        <div class="about-photo"><img src="les-photo.jpg" alt="Les"></div>
+        <div class="about-links">
+          <a href="https://drive.google.com/file/d/1e0Ei5sDZ3HkjiWOXMgOrm0rxwFnEUYFS/view?usp=drive_link" target="_blank">🎥 Watch My Video Intro</a>
+        </div>
+      </div>
+  </div>
+</section>
+
+<section id="services">
+  <div class="container">
+    <div class="eyebrow">What I Do</div>
+    <h2 class="section-title">What I Take Off Your Plate</h2>
+    <div class="intro-p">
+      <p>Lease documents, tenant records, maintenance requests, reports — on any given week, all of it needs attention at once. That's where I come in, keeping everything where it should be as your portfolio grows.</p>
+    </div>
+
+    <div class="grid-3">
+      <div class="card-service">
+        <div class="tape"></div>
+        <div class="photo-banner">
+          <img src="https://images.pexels.com/photos/7718714/pexels-photo-7718714.jpeg?auto=compress&cs=tinysrgb&w=500" alt="Minimalist paperwork desk">
+          <div class="num-badge">01</div>
+        </div>
+        <div class="body">
+          <div class="eyebrow-sm">Lease Administration</div>
+          <h3>Never lose track of lease agreements and renewals again.</h3>
+          <p class="desc">I keep the full lease lifecycle in order — records, renewal timelines, and documentation — so nothing slips through.</p>
+          <div class="result">Deadlines tracked ahead of time, records ready for an audit any day.</div>
+        </div>
+      </div>
+
+      <div class="card-service">
+        <div class="tape"></div>
+        <div class="photo-banner">
+          <img src="https://images.pexels.com/photos/34135038/pexels-photo-34135038.jpeg?auto=compress&cs=tinysrgb&w=500" alt="Keys and real estate documents">
+          <div class="num-badge">02</div>
+        </div>
+        <div class="body">
+          <div class="eyebrow-sm">Tenant Management</div>
+          <h3>Keep tenant information easy to find, not scattered.</h3>
+          <p class="desc">Instead of details spread across emails and spreadsheets, tenant records live in one place you can actually search.</p>
+          <div class="result">Information you can find in seconds, not five different tabs.</div>
+        </div>
+      </div>
+
+      <div class="card-service">
+        <div class="tape"></div>
+        <div class="photo-banner">
+          <img src="https://images.pexels.com/photos/5668469/pexels-photo-5668469.jpeg?auto=compress&cs=tinysrgb&w=500" alt="Notebook and clipboard with papers">
+          <div class="num-badge">03</div>
+        </div>
+        <div class="body">
+          <div class="eyebrow-sm">Maintenance Coordination</div>
+          <h3>Stay on top of every maintenance request.</h3>
+          <p class="desc">I track requests from first report to resolution, with clear communication the whole way through.</p>
+          <div class="result">Better visibility, and tenants who feel heard along the way.</div>
+        </div>
+      </div>
+
+      <div class="card-service">
+        <div class="tape"></div>
+        <div class="photo-banner">
+          <img src="https://images.pexels.com/photos/5942707/pexels-photo-5942707.jpeg?auto=compress&cs=tinysrgb&w=500" alt="Calculator and laptop with coffee">
+          <div class="num-badge">04</div>
+        </div>
+        <div class="body">
+          <div class="eyebrow-sm">Rent Tracking</div>
+          <h3>Make rent monitoring simpler and more consistent.</h3>
+          <p class="desc">Payments, balances, and follow-ups tracked in one place instead of chased down manually every month.</p>
+          <div class="result">Cleaner records, far less manual chasing.</div>
+        </div>
+      </div>
+
+      <div class="card-service">
+        <div class="tape"></div>
+        <div class="photo-banner">
+          <img src="dashboard.png" alt="Property management monitoring dashboard">
+          <div class="num-badge">05</div>
+        </div>
+        <div class="body">
+          <div class="eyebrow-sm">Reporting &amp; Dashboards</div>
+          <h3>See what's happening across your properties at a glance.</h3>
+          <p class="desc">I build dashboards that show occupancy, renewals, and performance clearly, instead of buried in separate files.</p>
+          <div class="result">Decisions backed by numbers you can actually trust.</div>
+        </div>
+      </div>
+
+      <div class="card-service">
+        <div class="tape"></div>
+        <div class="photo-banner">
+          <img src="https://images.pexels.com/photos/6991863/pexels-photo-6991863.jpeg?auto=compress&cs=tinysrgb&w=500" alt="Laptop with sticky notes">
+          <div class="num-badge">06</div>
+        </div>
+        <div class="body">
+          <div class="eyebrow-sm">Process Improvement</div>
+          <h3>Build better systems for smoother daily operations.</h3>
+          <p class="desc">The best operations aren't run on hard work alone. I look at what's actually not working and fix the process, not just the symptom.</p>
+          <div class="result">Fewer bottlenecks that don't depend on someone remembering every step.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="closing">
+      <h3>None of this is complicated.</h3>
+      <p>It just needs someone paying attention to it every day — that's the part I take off your plate.</p>
+    </div>
+  </div>
+</section>
+
+<section id="benefits">
+  <div class="container">
+    <div class="eyebrow">Why Work With Me</div>
+    <h2 class="section-title">More Than Task Support</h2>
+    <div class="intro-p">
+      <p>Plenty of property management VAs can check tasks off a list. What's harder to find is someone who catches the renewal about to slip through, or the rent roll that doesn't quite add up, before it becomes a problem — and keeps things running the way they're supposed to, without you having to check in.</p>
+    </div>
+
+    <div class="grid-2">
+      <div class="card-blush">
+        <div class="tape"></div>
+        <div class="top-row"><div class="thumb"><img src="https://images.pexels.com/photos/29765813/pexels-photo-29765813.jpeg?auto=compress&cs=tinysrgb&w=200" alt="Organized stationery flat lay"></div><div class="num">01</div></div>
+        <h3>Organized Systems</h3>
+        <p class="punch">Records you can actually find without digging.</p>
+        <p class="desc">From lease files to tenant databases and operational trackers, I build systems that keep information accurate — and easy to find, not buried in a dozen files.</p>
+      </div>
+      <div class="card-blush">
+        <div class="tape"></div>
+        <div class="top-row"><div class="thumb"><img src="https://images.pexels.com/photos/29765800/pexels-photo-29765800.jpeg?auto=compress&cs=tinysrgb&w=200" alt="Coffee and desk aesthetic"></div><div class="num">02</div></div>
+        <h3>Proactive Operations</h3>
+        <p class="punch">I don't wait for problems to happen.</p>
+        <p class="desc">By monitoring renewals, deadlines, and maintenance requests, I catch small issues early — before they cost you time or money.</p>
+      </div>
+      <div class="card-blush">
+        <div class="tape"></div>
+        <div class="top-row"><div class="thumb"><img src="https://images.pexels.com/photos/29765806/pexels-photo-29765806.jpeg?auto=compress&cs=tinysrgb&w=200" alt="Laptop and desk aesthetic"></div><div class="num">03</div></div>
+        <h3>Better Visibility</h3>
+        <p class="punch">You shouldn't have to ask twice to know what's going on.</p>
+        <p class="desc">I build trackers and dashboards that give you clear visibility into occupancy, renewals, and day-to-day operations.</p>
+      </div>
+      <div class="card-blush">
+        <div class="tape"></div>
+        <div class="top-row"><div class="thumb"><img src="https://images.pexels.com/photos/29765794/pexels-photo-29765794.jpeg?auto=compress&cs=tinysrgb&w=200" alt="Phone and desk aesthetic"></div><div class="num">04</div></div>
+        <h3>Reliable Administrative Support</h3>
+        <p class="desc">You focus on growing the business. I handle the operational details behind the scenes, without needing constant check-ins.</p>
+      </div>
+    </div>
+
+    <div class="closing">
+      <p style="font-family:'DM Serif Display',serif;font-size:21px;">Less firefighting day to day usually means more room to actually grow.</p>
+    </div>
+  </div>
+</section>
+
+<section id="projects">
+  <div class="container">
+    <div class="eyebrow">Featured Projects</div>
+    <h2 class="section-title">What This Actually Looks Like</h2>
+    <p class="subheading">A closer look at how I turn everyday property management challenges into organized systems.</p>
+    <div class="intro-p">
+      <p>Every project below is inspired by real property management workflows I've handled throughout my career.</p>
+    </div>
+
+    <div class="grid-3">
+      <div class="card-polaroid">
+        <div class="thumb t1">🗂️</div>
+        <div class="body">
+          <h3>Property Management Operations System</h3>
+          <a href="project-1.html" class="btn">Explore Project →</a>
+        </div>
+      </div>
+      <div class="card-polaroid">
+        <div class="thumb t2">📋</div>
+        <div class="body">
+          <h3>Tenant Onboarding System</h3>
+          <a href="project-2.html" class="btn">Explore Project →</a>
+        </div>
+      </div>
+      <div class="card-polaroid">
+        <div class="thumb t3">⚙️</div>
+        <div class="body">
+          <h3>Process Improvement &amp; SOP Library</h3>
+          <a href="project-3.html" class="btn">Explore Project →</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="tools">
+  <div class="container">
+    <div class="eyebrow">My Toolkit</div>
+    <h2 class="section-title">Tools I Use</h2>
+    <p class="subheading">What's actually running behind the scenes to keep everything on track.</p>
+
+    <div class="tools-compilation">
+      <img src="tools-compilation.png" alt="Tools I use, compiled with logos">
+    </div>
+  </div>
+</section>
+
+<section id="credentials">
+  <div class="container">
+    <div class="eyebrow">Credentials</div>
+    <h2 class="section-title">Certifications &amp; Training</h2>
+    <div class="cert-grid">
+      <div class="cert-card">
+        <div class="cert-photo"><img src="cert1.png" alt="Real Estate Property Management Training"></div>
+        <div class="cert-row"><div class="ribbon">🎖️</div><div><h3>Real Estate Property Management Training</h3><p></div></div>
+      </div>
+      <div class="cert-card">
+        <div class="cert-photo"><img src="cert2.png" alt="Basic AppFolio Navigation Training"></div>
+        <div class="cert-row"><div class="ribbon">🎖️</div><div><h3>Basic AppFolio Navigation Training</h3><p></div></div>
+      </div>
+      <div class="cert-card">
+        <div class="cert-photo"><img src="cert3.png" alt="Fair Housing Laws & Regulations Certificate"></div>
+        <div class="cert-row"><div class="ribbon">🎖️</div><div><h3>Fair Housing Laws & Regulations Certificate</h3><p></p></div></div>
+      </div>
+   </div>
+    <div class="cert-cta">
+      <a href="https://drive.google.com/drive/folders/1xAiuDLYGTGBpx6VBQ4N1ZQxhhrjg1FRX?usp=drive_link" target="_blank">📂 View All Certificates</a>
+    </div>
+  </div>
+</section>
+
+<section class="contact-wrap" id="contact">
+  <div class="container">
+    <h2>Ready to hand off the parts of property management that eat your time?</h2>
+    <p>Your property. My priority. Send a quick note and let's talk about what your team actually needs.</p>
+    <div class="hero-actions" style="justify-content:center;">
+      <a href="mailto:lb.bongat@gmail.com?subject=Let's%20Work%20Together" class="btn-primary" style="box-shadow:0 8px 20px rgba(184,103,122,0.25);">Get In Touch</a>
+    </div>
+    <div class="contact-info">
+      <div class="item"><strong>Email</strong>lb.bongat@gmail.com</div>
+      <div class="item"><strong>LinkedIn</strong>linkedin.com/in/lbbongat</div>
+      <div class="item"><strong>Availability</strong>Open to remote, US-based clients</div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <div>
+      <div class="brand-foot"></div>
+      <div class="tagline">Your Property. My Priority.</div>
+    </div>
+    <div class="foot-links">
+      <a href="#about">About</a>
+      <a href="#services">Services</a>
+      <a href="#projects">Projects</a>
+      <a href="#tools">Tools</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  var hamburger = document.getElementById('hamburgerBtn');
+  var navLinks = document.getElementById('navLinks');
+  hamburger.addEventListener('click', function(e){
+    e.stopPropagation();
+    navLinks.classList.toggle('nav-open');
+  });
+  navLinks.querySelectorAll('a').forEach(function(link){
+    link.addEventListener('click', function(){ navLinks.classList.remove('nav-open'); });
+  });
+</script>
+
+</body>
+</html>

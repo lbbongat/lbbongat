@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Process Improvement &amp; SOP Library</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Pinyon+Script&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --white:#FFFFFF; --cream:#FBF4EF; --paper:#FFFDFB;
+    --blush:#F1CFD2; --peach:#F5DEC7; --rose-deep:#B8677A; --rose:#D98A99;
+    --blush-deep:#E7B4B9; --ink:#4A3439; --ink-soft:#7A6266; --line:#EADCD8;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  body{font-family:'DM Sans',sans-serif;color:var(--ink);background:var(--cream);line-height:1.65;-webkit-font-smoothing:antialiased;}
+  .container{max-width:900px;margin:0 auto;padding:0 40px;}
+  h1,h2,h3{font-family:'DM Serif Display',serif;font-weight:400;letter-spacing:-0.01em;}
+  a{color:inherit;text-decoration:none;}
+  img{max-width:100%;display:block;}
+
+  nav{padding:24px 0;border-bottom:1px solid var(--line);}
+  .brand{font-family:'DM Serif Display',serif;font-size:20px;color:var(--rose-deep);}
+  .brand span{font-family:'Pinyon Script',cursive;font-size:25px;}
+  .back-link{display:inline-flex;align-items:center;gap:6px;font-size:13.5px;color:var(--ink-soft);margin-top:12px;font-weight:600;}
+  .back-link:hover{color:var(--rose-deep);}
+
+  .hero-block{padding:56px 0 40px;}
+  .eyebrow{font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--rose-deep);margin-bottom:16px;}
+  .hero-block h1{font-size:36px;line-height:1.25;max-width:680px;margin-bottom:20px;}
+  .hero-block p.desc{font-size:16px;color:var(--ink-soft);max-width:65ch;}
+  .tools-line{margin-top:20px;font-size:13px;font-weight:600;color:var(--rose-deep);}
+  .tools-line strong{color:var(--ink);}
+
+  section{padding:48px 0;}
+  .section-label{font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--rose-deep);margin-bottom:24px;}
+
+  .gallery{display:grid;grid-template-columns:1fr 1fr;gap:20px;}
+  @media(max-width:640px){.gallery{grid-template-columns:1fr;}}
+  .shot{
+    aspect-ratio:3/4;background:var(--paper);border:1px solid var(--line);border-radius:14px;
+    display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;
+    box-shadow:0 10px 24px rgba(74,52,57,0.06);
+  }
+  .shot .lines{width:60%;} .shot .bar{height:8px;border-radius:4px;background:var(--blush);margin-bottom:8px;}
+  .shot .bar:nth-child(2){width:75%;} .shot .bar:nth-child(3){width:55%;}
+  .shot .label{font-size:11.5px;color:var(--ink-soft);letter-spacing:.03em;text-transform:uppercase;margin-top:4px;}
+
+  .story-flow{display:flex;align-items:stretch;gap:14px;margin-top:8px;}
+  @media(max-width:800px){.story-flow{flex-direction:column;}}
+  .story-step{flex:1;border-radius:16px;padding:26px 24px;}
+  .story-step.problem{background:var(--paper);border:1px dashed var(--line);}
+  .story-step.approach{background:var(--paper);border:1px solid var(--line);}
+  .story-step.result{background:linear-gradient(135deg,var(--blush) 0%,var(--peach) 100%);border:1px solid rgba(184,103,122,0.3);box-shadow:0 14px 28px rgba(74,52,57,0.1);}
+  .story-step .icon{font-size:22px;margin-bottom:12px;display:block;}
+  .story-step .label{font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--rose-deep);margin-bottom:10px;}
+  .story-step p{font-size:14px;color:var(--ink-soft);}
+  .story-step.result p{color:var(--ink);font-weight:500;}
+  .flow-arrow{display:flex;align-items:center;justify-content:center;font-size:20px;color:var(--rose-deep);opacity:.5;flex-shrink:0;padding:0 2px;}
+  @media(max-width:800px){.flow-arrow{transform:rotate(90deg);padding:6px 0;}}
+
+  .highlights{background:var(--paper);border:1px solid var(--line);border-radius:16px;padding:32px 34px;}
+  .highlights ul{list-style:none;}
+  .highlights li{display:flex;gap:12px;font-size:14.5px;color:var(--ink-soft);padding:9px 0;border-bottom:1px solid var(--line);}
+  .highlights li:last-child{border-bottom:none;}
+  .highlights li .dot{color:var(--rose-deep);font-weight:700;}
+  .highlights li strong{color:var(--ink);font-weight:700;}
+
+  .drive-cta{
+    background:linear-gradient(135deg,var(--blush) 0%,var(--peach) 100%);
+    border-radius:22px;padding:44px 40px;text-align:center;
+  }
+  .drive-cta h3{font-size:22px;margin-bottom:10px;}
+  .drive-cta p{color:var(--ink-soft);font-size:14.5px;max-width:440px;margin:0 auto 24px;}
+  .btn-primary{
+    display:inline-flex;align-items:center;gap:8px;
+    background:var(--rose-deep);color:var(--paper);
+    padding:14px 30px;border-radius:100px;font-weight:600;font-size:15px;
+    box-shadow:0 8px 20px rgba(184,103,122,0.3);
+  }
+
+  footer{padding:36px 0;text-align:center;color:var(--ink-soft);font-size:13px;border-top:1px solid var(--line);margin-top:20px;}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="container">
+    <div class="brand"></div>
+    <a href="index.html#projects" class="back-link">← Back to Portfolio</a>
+  </div>
+</nav>
+
+<div class="hero-block">
+  <div class="container">
+    <div class="eyebrow">Featured Project</div>
+    <h1>Process Improvement &amp; SOP Library</h1>
+    <p class="desc">A complete process handover, built to help my replacement pick up exactly where I left off — no gaps, no guesswork.</p>
+    <div class="tools-line"><strong>Skills Demonstrated:</strong> Process Improvement • SOP Development • Workflow Design • Documentation • Operations Support</div>
+  </div>
+</div>
+
+<section>
+  <div class="container">
+    <div class="section-label">The Story</div>
+    <div class="story-flow">
+      <div class="story-step problem">
+        <span class="icon">🔍</span>
+        <div class="label">The Problem</div>
+        <p>When I resigned from my role, my replacement needed more than a quick handoff — they needed to understand the entire process well enough to run it without me there to explain it.</p>
+      </div>
+      <div class="flow-arrow">→</div>
+      <div class="story-step approach">
+        <span class="icon">🛠️</span>
+        <div class="label">My Approach</div>
+        <p>I mapped the full process from start to finish into one guide — how it works, how to monitor it, which documents matter, and how to report on it — so the transition wouldn't depend on memory or guesswork.</p>
+      </div>
+      <div class="flow-arrow">→</div>
+      <div class="story-step result">
+        <span class="icon">✨</span>
+        <div class="label">The Result</div>
+        <p>A replacement who could step in with confidence, and a process that kept running smoothly after I left.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <div class="section-label">Screenshots</div>
+    <div class="gallery">
+      <div class="shot"><img src="sop1.png" alt="Process improvement screenshot" style="width:100%;height:100%;object-fit:cover;border-radius:14px;"></div>
+      <div class="shot"><img src="sop2.png" alt="Process improvement screenshot" style="width:100%;height:100%;object-fit:cover;border-radius:14px;"></div>
+      <div class="shot"><img src="sop3.png" alt="Process improvement screenshot" style="width:100%;height:100%;object-fit:cover;border-radius:14px;"></div>
+      <div class="shot"><img src="sop4.png" alt="Process improvement screenshot" style="width:100%;height:100%;object-fit:cover;border-radius:14px;"></div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <div class="section-label">Inside the Library</div>
+    <div class="highlights">
+      <ul>
+        <li><span class="dot">•</span> <strong>Process Walkthrough</strong> — Step-by-step breakdown of the process from start to finish</li>
+        <li><span class="dot">•</span> <strong>Monitoring Structure</strong> — How progress and performance are tracked along the way</li>
+        <li><span class="dot">•</span> <strong>Supporting Documents</strong> — The forms and records used throughout the process</li>
+        <li><span class="dot">•</span> <strong>Reporting Guide</strong> — How to pull and read the reports tied to this process</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <div class="drive-cta">
+      <h3>Want a closer look?</h3>
+      <p>View the full working file, formulas, and structure on Google Drive.</p>
+      <a href="https://drive.google.com/drive/folders/17BbHra5uqA8H3NlyYEOc1d5KjA6XEu_B?usp=drive_link" target="_blank" class="btn-primary">View on Google Drive ↗</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">Your Property. My Priority.</div>
+</footer>
+
+</body>
+</html>
